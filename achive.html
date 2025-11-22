@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Achievements</title>
+<style>
+:root{
+  --bg-1:#05080f; --bg-2:#071427; --text:#e8f8ff; --muted:#b5b5b5;
+  --glass:rgba(255,255,255,0.03); --neon-1:#00eaff; --neon-2:#7b2ff7; --neon-3:#ff3cac;
+  --radius:16px; --shadow:rgba(2,8,23,0.6);
+}
+html.light{
+  --bg-1:#f7fafc; --bg-2:#eef2ff; --text:#071427; --muted:#475569; --glass:rgba(0,0,0,0.04);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:"Poppins",sans-serif;background:linear-gradient(120deg,var(--bg-1),var(--bg-2));color:var(--text);transition:background .45s,color .45s}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+
+header{position:sticky;top:18px;z-index:12;max-width:1200px;margin:0 auto;padding:8px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}
+/* Avatar */
+.avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.1);box-shadow:0 6px 20px rgba(0,0,0,0.4);}
+.avatar img{width:100%;height:100%;object-fit:cover;}
+.logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));display:flex;align-items:center;justify-content:center;color:#051018;font-weight:800;box-shadow:0 8px 28px rgba(0,0,0,0.4)}
+nav{display:flex;gap:14px;align-items:center;font-size:0.95rem}
+nav a{padding:8px 10px;border-radius:10px;color:var(--muted);transition:.18s}
+nav a:hover{color:var(--text);background:var(--glass)}
+#themeBtn{padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+
+main{max-width:1200px;margin:60px auto;padding:0 20px;display:flex;flex-direction:column;gap:40px;position:relative;z-index:4}
+
+h1.page-heading{text-align:center;color:var(--neon-1);font-size:2rem;margin-bottom:32px}
+
+.achievements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+
+.achievement-card{
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,0.04);
+  border-radius:var(--radius);
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+  box-shadow:0 20px 60px var(--shadow);
+  transition:all .3s;
+  display:flex;
+  flex-direction:column;
+  padding:16px;
+}
+
+.achievement-card.landscape{grid-column:span 2; height:220px; flex-direction:row; gap:16px}
+.achievement-card.portrait{height:420px}
+
+.achievement-card img{width:100%;height:100%;object-fit:cover;border-radius:14px;transition:transform .3s}
+.achievement-card.landscape img{width:45%;border-radius:14px}
+.achievement-card:hover img{transform:scale(1.05)}
+
+.achievement-card .content{padding:12px;display:flex;flex-direction:column;gap:8px;flex:1}
+.achievement-card .title{color:var(--neon-2);font-weight:700;font-size:1.2rem}
+.achievement-card .desc{color:var(--muted);font-size:0.95rem;flex:1}
+
+.view-more{text-align:center;margin-top:24px}
+.view-more a{
+  padding:12px 28px;
+  border-radius:30px;
+  border:2px solid var(--neon-2);
+  color:var(--neon-2);
+  font-weight:700;
+  text-decoration:none;
+  transition:all .3s;
+}
+.view-more a:hover{background:linear-gradient(90deg,var(--neon-1),var(--neon-2));color:#04111a}
+
+footer{padding:28px;text-align:center;color:var(--muted);font-size:0.95rem}
+
+.bg-orb{position:fixed;inset:0;z-index:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.14}
+.orb.one{width:420px;height:420px;left:-80px;top:30px;background:linear-gradient(135deg,var(--neon-1),var(--neon-2));animation:orbA 8s ease-in-out infinite alternate}
+.orb.two{width:340px;height:340px;right:-60px;bottom:40px;background:linear-gradient(135deg,var(--neon-2),var(--neon-1));animation:orbB 9s ease-in-out infinite alternate}
+@keyframes orbA{0%{transform:translateY(0)}100%{transform:translateY(-32px)}}
+@keyframes orbB{0%{transform:translateY(0)}100%{transform:translateY(28px)}}
+
+@media(max-width:760px){.achievements-grid{grid-template-columns:1fr} .achievement-card.landscape{grid-column:span 1;flex-direction:column;height:260px} .achievement-card.landscape img{width:100%;height:180px}}
+</style>
+</head>
+<body>
+
+<div class="bg-orb">
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+</div>
+
+<header>
+  <div class="brand">
+    <!-- Avatar -->
+    <div class="avatar">
+      <img src="img/avatar.png" alt="Anandh Avatar">
+    </div>
+    <div style="display:flex;flex-direction:column;line-height:1">
+      <div style="font-weight:700">Anandh Anbazhagan</div>
+      <div style="font-size:0.78rem;color:var(--muted)">Full-Stack · Graphic Designer</div>
+    </div>
+  </div>
+  <nav>
+    <a href="anandh.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <button id="themeBtn" aria-pressed="false" title="Toggle theme">🌙 Dark Mode</button>
+  </nav>
+</header>
+
+<main>
+  <h1 class="page-heading">🏆 Achievements</h1>
+
+  <div class="achievements-grid">
+    <!-- First 2 Landscape: Awards -->
+    <div class="achievement-card landscape">
+      <img src="img/rising star.jpg" alt="Award 1">
+      <div class="content">
+        <div class="title">Rising Star Award</div>
+        <div class="desc">A shines bright as YUVA JEC STAR 2024! 🌟 Inspiring leadership, teamwork, and dedication in action.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card landscape">
+      <img src="img/excellence.jpg" alt="Award 2">
+      <div class="content">
+        <div class="title">Excellence contribution</div>
+        <div class="desc">Recognizing Anandh A for outstanding contributions at AISYWLC'24 – a true example of dedication and excellence!.</div>
+      </div>
+    </div>
+    <br>
+
+    <h1 class="page-heading">Certificates</h1>
+
+    <br>
+
+
+
+    <!-- Next 4 Landscape: Certificates -->
+    <div class="achievement-card landscape">
+      <img src="img/intern.jpg" alt="Certificate 1">
+      <div class="content">
+        <div class="title">Full-Stack Internship</div>
+        <div class="desc">I'm Completed My 3 Month Full-Stack Internship.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card landscape">
+      <img src="img/young scientist.jpg" alt="Certificate 2">
+      <div class="content">
+        <div class="title">Participation Certificate</div>
+        <div class="desc">Participation in Young Scientist Program.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card landscape">
+      <img src="img/yuva board membership.jpg" alt="Certificate 3">
+      <div class="content">
+        <div class="title">YUVA Board Membership</div>
+        <div class="desc">Certificate for community leadership and engagement.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card landscape">
+      <img src="img/volunteer.png" alt="Certificate 4">
+      <div class="content">
+        <div class="title">Volunteer Certificate</div>
+        <div class="desc">Recognized for dedicated volunteer service.</div>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- Portrait Cards -->
+    <div class="achievement-card portrait">
+      <img src="img/pro.png" alt="Portrait Achievement 1">
+      <div class="content">
+        <div class="title">Runner-Up</div>
+        <div class="desc">Achieved runner-up position in a prestigious competition.</div>
+      </div>
+    </div>
+    <div class="achievement-card portrait">
+      <img src="img/apper.jpg" alt="Portrait Achievement 1">
+      <div class="content">
+        <div class="title">Internship</div>
+        <div class="desc">Completed a valuable internship program.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="view-more">
+    <a href="https://drive.google.com/drive/folders/17x_vSlUsPmJQZ1VMQkUoBLeDPDRbfXpD" target="_blank">View All Certificates</a>
+  </div>
+</main>
+
+<footer>© <span id="year"></span> Anandh — Crafted with code & design</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const themeBtn = document.getElementById('themeBtn');
+  themeBtn.addEventListener('click', ()=>{
+    document.documentElement.classList.toggle('light');
+    const isLight = document.documentElement.classList.contains('light');
+    themeBtn.textContent = isLight?'🌞 Light Mode':'🌙 Dark Mode';
+    themeBtn.setAttribute('aria-pressed',isLight?'true':'false');
+  });
+</script>
+
+</body>
+</html>

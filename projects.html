@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects & Designs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-1: #05060a;
+    --bg-2: #071227;
+    --text: #eaf6ff;
+    --muted: #9fb6c8;
+    --card-bg: rgba(255,255,255,0.025);
+    --neon-1: #00eaff;
+    --neon-2: #7b2ff7;
+    --glass-border: rgba(255,255,255,0.06);
+    --radius: 14px;
+  }
+
+  html.light {
+    --bg-1: #f6f8fb;
+    --bg-2: #f2f6fb;
+    --text: #081424;
+    --muted: #5b6b78;
+    --neon-1: #0066ff;
+    --neon-2: #a855f7;
+    --glass-border: rgba(0,0,0,0.06);
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg,var(--bg-1),var(--bg-2));
+    color: var(--text);
+    transition: background 0.45s,color 0.45s;
+  }
+
+  /* Background neon orbs */
+  .bg-orb { position: fixed; inset:0; z-index:0; pointer-events:none; }
+  .orb { position:absolute; border-radius:50%; filter:blur(120px); opacity:0.14; }
+  .orb.one { width:420px;height:420px;left:-80px;top:30px; background:linear-gradient(135deg,var(--neon-1),var(--neon-2)); animation:orbA 8s ease-in-out infinite alternate;}
+  .orb.two { width:340px;height:340px;right:-60px;bottom:40px; background:linear-gradient(135deg,var(--neon-2),var(--neon-1)); animation:orbB 9s ease-in-out infinite alternate;}
+  @keyframes orbA{0%{transform:translateY(0)}100%{transform:translateY(-32px)}}
+  @keyframes orbB{0%{transform:translateY(0)}100%{transform:translateY(28px)}}
+
+  header{
+    position:sticky; top:18px; z-index:6;
+    max-width:1200px; margin:18px auto; display:flex; align-items:center; justify-content:space-between;
+    padding:0 20px; gap:12px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .avatar{width:56px;height:40px;border-radius:10px;overflow:hidden;border:1px solid var(--glass-border);background:var(--card-bg);}
+  .brand .title{font-weight:700;}
+  .brand .sub{color:var(--muted); font-size:0.86rem;}
+  nav a{margin-left:12px;text-decoration:none;color:var(--text); font-weight:600; transition:color 0.3s;}
+  nav a:hover{color: var(--neon-1);}
+  #themeBtn{padding:8px 12px;border-radius:999px;border:1px solid var(--glass-border);background:transparent;color:var(--text);cursor:pointer;font-weight:600;}
+
+  main{max-width:1200px;margin:36px auto;padding:24px;position:relative;z-index:4;}
+  h1.page-heading{font-size:2rem;margin-bottom:24px;color: var(--neon-1); text-align:center;}
+
+  /* Project Cards Grid */
+  .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
+  .project-card {
+    background: var(--card-bg);
+    border:1px solid var(--glass-border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(12px);
+    box-shadow:0 12px 34px rgba(0,0,0,0.45);
+    overflow:hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    cursor:pointer;
+  }
+  .project-card:hover { transform:translateY(-8px); box-shadow:0 28px 60px rgba(0,0,0,0.55); border-color: var(--neon-1); }
+  .project-card img{width:100%; display:block; border-bottom:1px solid var(--glass-border);}
+  .project-card-content{padding:16px;}
+  .project-card h3{margin:0 0 8px;font-size:1.2rem;color: var(--neon-2);}
+  .project-card p{margin:0;font-size:0.95rem;color: var(--muted);}
+
+  .view-more{text-align:center;margin-top:30px;}
+  .view-more a{
+    text-decoration:none;
+    padding:10px 24px;
+    border-radius:30px;
+    border:2px solid var(--neon-2);
+    color: var(--neon-2);
+    font-weight:700;
+    transition:all 0.3s;
+  }
+  .view-more a:hover{
+    background: var(--neon-2);
+    color:#04121a;
+    box-shadow:0 10px 30px rgba(123,47,247,0.6);
+  }
+
+  footer{text-align:center;color:var(--muted);margin-top:50px;font-size:0.95rem;}
+</style>
+</head>
+<body>
+
+<div class="bg-orb">
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+</div>
+
+<header>
+  <div class="brand">
+    <div class="avatar"><img src="img/avatar.png" alt="avatar"></div>
+    <div>
+      <div class="title">Anandh Anbazhagan</div>
+      <div class="sub">Full-Stack Developer · Graphic Designer</div>
+    </div>
+  </div>
+  <nav>
+    <a href="anandh.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">skills</a>
+    <a href="achive.html">Achievements</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <button id="themeBtn" title="Toggle theme">🌞 Light Mode</button>
+</header>
+
+<main>
+  <h1 class="page-heading">💻 Projects & Designs</h1>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="img/Screenshot 2025-07-02 181857.png" alt="Creative Poster">
+      <div class="project-card-content">
+        <h3>Car Parking System</h3>
+        <p> The car parking system project description goes here. Its Working Zelio PLC</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="img/WhatsApp Image 2025-05-12 at 11.14.49_38706c1b.jpg" alt="Mobile App UI">
+      <div class="project-card-content">
+        <h3>Smart Lock System</h3>
+        <p>This RFID ID based SMART LOCK SYSTEM project description goes here. also Its working Two factor authentication</p> 
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="img/1000016445.jpg" alt="Event Poster">
+      <div class="project-card-content">
+        <h3>Event Poster</h3>
+        <p>The poster is Branding the event.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="img/AISYWLC JAGA ANNA.png" alt="Website Redesign">
+      <div class="project-card-content">
+        <h3>Road Map</h3>
+        <p>The Road Map project description goes here.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="img/signox banner 25 x 8.jpg" alt="Social Media Templates">
+      <div class="project-card-content">
+        <h3>banner</h3>
+        <p>Show Case of the Event.</p>
+      </div>
+  </div>
+  <div class="project-card">
+      <img src="img/10 x 15.jpg" alt="Social Media Templates">
+      <div class="project-card-content">
+        <h3>banner</h3>
+        <p>PhotoBooth banner design.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="img/prot.png" alt="Social Media Templates">
+      <div class="project-card-content">
+        <h3>portfolio</h3>
+        <p>This is My Personal Portfolio.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="img/form.png" alt="Social Media Templates">
+      <div class="project-card-content">
+        <h3>Form</h3>
+        <p>Course Registration Form.</p>
+      </div>
+    </div>
+
+  <div class="view-more">
+    <a href="https://drive.google.com/drive/folders/1Ks92w9Nx7KNNjLI7vl2riken8bSxZ4qT" target="_blank">View More</a>
+  </div>
+</main>
+
+<footer>
+  © <span id="year"></span> Anandh — Crafted with code & design
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const themeBtn = document.getElementById('themeBtn');
+  themeBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light');
+    themeBtn.textContent = document.documentElement.classList.contains('light') ? '🌙 Dark Mode' : '🌞 Light Mode';
+  });
+</script>
+
+</body>
+</html>

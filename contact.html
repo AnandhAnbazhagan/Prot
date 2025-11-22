@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact</title>
+<style>
+:root{
+  --bg-1:#05080f; --bg-2:#071427; --text:#e8f8ff; --muted:#b5b5b5;
+  --glass:rgba(255,255,255,0.03); --neon1:#00eaff; --neon2:#7b2ff7; --radius:16px; --shadow:rgba(2,8,23,0.6);
+}
+html.light{
+  --bg-1:#f7fafc; --bg-2:#eef2ff; --text:#071427; --muted:#475569; --glass:rgba(0,0,0,0.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:"Poppins",sans-serif;background:linear-gradient(120deg,var(--bg-1),var(--bg-2));color:var(--text);transition:background .45s,color .45s}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+
+/* Background orbs */
+.bg-orb{position:fixed;inset:0;z-index:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.14}
+.orb.one{width:420px;height:420px;left:-80px;top:30px;background:linear-gradient(135deg,var(--neon1),var(--neon2));animation:orbA 8s ease-in-out infinite alternate}
+.orb.two{width:340px;height:340px;right:-60px;bottom:40px;background:linear-gradient(135deg,var(--neon2),var(--neon1));animation:orbB 9s ease-in-out infinite alternate}
+@keyframes orbA{0%{transform:translateY(0)}100%{transform:translateY(-32px)}}
+@keyframes orbB{0%{transform:translateY(0)}100%{transform:translateY(28px)}}
+
+/* Header */
+header{position:sticky;top:18px;z-index:6;max-width:1200px;margin:18px auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .avatar{width:50px;height:50px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:var(--glass)}
+.brand .avatar img{width:100%;height:100%;object-fit:cover}
+nav{display:flex;gap:14px;align-items:center;font-size:0.95rem}
+nav a{padding:8px 10px;border-radius:10px;color:var(--muted);transition:.18s}
+nav a:hover{color:var(--text);background:var(--glass)}
+#themeBtn{padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,0.04);cursor:pointer;color:var(--muted)}
+
+/* Main content */
+main{max-width:900px;margin:60px auto;padding:0 20px;display:flex;flex-direction:column;gap:36px;position:relative;z-index:4}
+h1.page-heading{text-align:center;color:var(--neon1);font-size:2rem;margin-bottom:24px}
+
+/* Contact cards */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:28px}
+.contact-card{background:var(--glass);border:1px solid rgba(255,255,255,0.03);border-radius:var(--radius);padding:18px;box-shadow:0 20px 60px var(--shadow);display:flex;flex-direction:column;gap:12px;transition:all .3s}
+.contact-card:hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(2,8,23,0.7)}
+.contact-card .title{font-weight:700;color:var(--neon2)}
+.contact-card .desc{color:var(--muted);font-size:0.95rem}
+.contact-card a{color:var(--neon1);text-decoration:none}
+.contact-card a:hover{text-decoration:underline}
+
+/* Form */
+form.contact-form{display:flex;flex-direction:column;gap:14px}
+.contact-form input,
+.contact-form textarea{padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);color:var(--text);font-size:0.95rem;outline:none;transition:all .3s}
+.contact-form input:focus,
+.contact-form textarea:focus{border-color:var(--neon1);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.contact-form textarea{resize:none;min-height:120px}
+.contact-form button{padding:12px 20px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#04111a;font-weight:700;cursor:pointer;transition:all .3s}
+.contact-form button:hover{filter:brightness(1.1)}
+
+footer{padding:28px;text-align:center;color:var(--muted);font-size:0.95rem}
+</style>
+</head>
+<body>
+
+<div class="bg-orb">
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+</div>
+
+<header>
+  <div class="brand">
+    <div class="avatar"><img src="img/avatar.png" alt="avatar"></div>
+    <div>
+      <div class="title">Anandh Anbazhagan</div>
+      <div class="sub">Full-Stack · Graphic Designer</div>
+    </div>
+  </div>
+  <nav>
+    <a href="anandh.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="achive.html">Achievements</a>
+  </nav>
+  <button id="themeBtn" aria-pressed="false">🌙 Dark Mode</button>
+</header>
+
+<main>
+  <h1 class="page-heading">✉ Contact Me</h1>
+  <div class="contact-grid">
+    <!-- Email Card -->
+    <div class="contact-card">
+      <div class="title">Email Me</div>
+      <div class="desc">Reach me directly at:</div>
+      <a href="mailto:anandhanbazhagan2@gmail.com">anandhanbazhagan2@gmail.com</a>
+    </div>
+
+    <!-- LinkedIn Card -->
+    <div class="contact-card">
+      <div class="title">LinkedIn</div>
+      <div class="desc">Visit my LinkedIn profile:</div>
+      <a href="https://www.linkedin.com/in/anandh-anbazhagan-289390259" target="_blank">linkedin.com/in/anandhanbazhagan</a>
+    </div>
+
+    <!-- GitHub Card -->
+    <div class="contact-card">
+      <div class="title">GitHub</div>
+      <div class="desc">Visit my GitHub profile:</div>
+      <a href="https://github.com/AnandhAnbazhagan" target="_blank">github.com/anandhanbazhagan</a>
+    </div>
+
+    <!-- Message Form -->
+    <div class="contact-card">
+      <div class="title">Send a Message</div>
+      <form class="contact-form" action="mailto:anandhanbazhagan2@gmail.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>© <span id="year"></span> Anandh — Crafted with code & design</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const themeBtn = document.getElementById('themeBtn');
+themeBtn.addEventListener('click', ()=>{
+  document.documentElement.classList.toggle('light');
+  const isLight = document.documentElement.classList.contains('light');
+  themeBtn.textContent = isLight?'🌞 Light Mode':'🌙 Dark Mode';
+  themeBtn.setAttribute('aria-pressed',isLight?'true':'false');
+});
+</script>
+</body>
+</html>

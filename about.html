@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Me</title>
+
+<style>
+/* ------------------------------
+    DARK / LIGHT MODE THEME
+------------------------------- */
+:root {
+  --bg: #05080f;
+  --text: #e0e0e0;
+  --card: rgba(255, 255, 255, 0.05);
+  --neon1: #00eaff;
+  --neon2: #7b2ff7;
+  --neon3: #ff3cac;
+}
+
+.light {
+  --bg: #f4f4f4;
+  --text: #1a1a1a;
+  --card: rgba(0, 0, 0, 0.05);
+}
+
+ /* -------------------------
+     Reset & base
+     ------------------------- */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:"Inter",Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue";background:linear-gradient(120deg,var(--bg-1),var(--bg-2));color:var(--text);-webkit-font-smoothing:antialiased;transition:background .45s,color .45s}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+
+
+  /* -------------------------
+     Background glow (blurred orbs)
+     ------------------------- */
+  .bg-orb {
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+  }
+  .orb {
+    position:absolute; border-radius:50%; filter:blur(120px); opacity:0.14;
+  }
+  .orb.one { width:420px; height:420px; left:-80px; top:30px; background:linear-gradient(135deg,var(--neon-1),var(--neon-2)); animation:orbA 8s ease-in-out infinite alternate; }
+  .orb.two { width:340px; height:340px; right:-60px; bottom:40px; background:linear-gradient(135deg,var(--neon-2),var(--neon-1)); animation:orbB 9s ease-in-out infinite alternate; }
+  @keyframes orbA { 0%{transform:translateY(0)}100%{transform:translateY(-32px)} }
+  @keyframes orbB { 0%{transform:translateY(0)}100%{transform:translateY(28px)} }
+
+/* -------------------------
+     Layout
+     ------------------------- */
+  header{ position:sticky; top:18px; z-index:6; max-width:1200px; margin:18px auto; display:flex; align-items:center; justify-content:space-between; padding:0 20px; gap:12px; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .avatar {
+    width:56px; height:40px; border-radius:10px; overflow:hidden;
+    border:1px solid var(--glass-border); background:var(--card-bg); box-shadow:0 10px 28px rgba(0,0,0,0.35);
+  }
+  .brand .title { font-weight:700; line-height:1; }
+  .brand .sub { color:var(--muted); font-size:0.86rem; margin-top:4px; }
+
+  /* minimal toggle */
+  #themeBtn { padding:8px 12px; border-radius:999px; border:1px solid var(--glass-border); background:transparent; color:var(--text); cursor:pointer; font-weight:600; }
+
+  main{ max-width:1200px; margin:36px auto; padding:24px; position:relative; z-index:4; }
+
+  .layout { display:grid; grid-template-columns: 1fr 380px; gap:32px; align-items:start; }
+  @media (max-width:980px) { .layout { grid-template-columns:1fr; padding:0 18px } .avatar{width:48px;height:64px} }
+
+/* ------------------------------ */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.4s ease;
+  overflow-x: hidden;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-3px);
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 120px 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 60px;
+}
+
+/* ------------------------------
+   🔥 IMAGE BLOCK (4:5, Rounded Rectangle)
+------------------------------- */
+.image-box {
+  width: 280px;
+  height: 450px;   /* 4:5 ratio */
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  transition: 0.4s ease;
+}
+
+/* Shadow Depth */
+.image-box {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+              0 0 25px rgba(0, 238, 255, 0.2);
+}
+
+/* Hover animation */
+.image-box:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.6),
+              0 0 40px rgba(0, 238, 255, 0.35);
+}
+
+/* Flowing neon border */
+.image-box::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 28px;
+  padding: 4px;
+  background: linear-gradient(120deg, var(--neon1), var(--neon2), var(--neon3), var(--neon1));
+  filter: blur(8px);
+  z-index: -1;
+  animation: borderFlow 6s linear infinite;
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Image */
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ------------------------------
+   TEXT STYLES
+------------------------------- */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+.gradient-text {
+  background: linear-gradient(90deg, var(--neon1), var(--neon2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+.skill-box {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.skill-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--neon1);
+  box-shadow: 0 0 20px rgba(0, 238, 255, 0.25);
+}
+</style>
+</head>
+
+<body>
+
+ <!-- background orbs -->
+  <div class="bg-orb" aria-hidden="true">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+  </div>
+
+  <!-- header -->
+  <header>
+    <div class="brand">
+      <div class="avatar" aria-hidden="true">
+        <img src="img/avatar.png" alt="avatar">
+      </div>
+      
+      <div>
+        <div class="title">Anandh Anbazhagan</div>
+        <div class="sub">Full-Stack Developer · Graphic Designer</div>
+      </div>
+    </div>
+    <nav>
+        <a href="anandh.html">Home</a> ·
+        <a href="skills.html">Skills</a> ·
+        <a href="projects.html">Projects</a> ·
+        <a href="achive.html">Achievements</a> ·
+        <a href="contact.html">Contact</a>
+  
+      </nav>
+
+
+    <button id="themeBtn" title="Toggle theme">🌞 Light Mode</button>
+  </header>
+
+<div class="container">
+
+  <!-- IMAGE BLOCK -->
+  <div class="image-box">
+    <img src="img/DSC08268.JPG" />
+  </div>
+
+  <!-- TEXT BLOCK -->
+  <div>
+    <h1>About <span class="gradient-text">Me</span></h1>
+    <p>
+      I'm <strong style="color:var(--neon1)">Anandh Anbazhagan</strong>, a creative Full Stack Developer and Graphic Designer who blends clean code with 
+      modern design aesthetics to build premium, interactive digital experiences.
+    </p>
+
+    <p>
+      I specialize in UI development, animations, branding, and responsive layouts — 
+      combining creativity with engineering precision.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-box">Full Stack Developer</div>
+      <div class="skill-box">Graphic Design</div>
+      <div class="skill-box">Branding</div>
+      <div class="skill-box">Creative Systems</div>
+      <div class="skill-box">Motion Design</div>
+      <div class="skill-box">Video Editing</div>
+    </div>
+  </div>
+
+</div>
+
+ </main>
+
+  <footer>© <span id="year"></span> Anandh — Crafted with code & design</footer>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // theme toggle — toggles html.light for full-scope variables
+  const themeBtn = document.getElementById('themeBtn');
+  themeBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light');
+    const isLight = document.documentElement.classList.contains('light');
+    themeBtn.textContent = isLight ? '🌙 Dark Mode' : '🌞 Light Mode';
+    themeBtn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+  });
+
+  // subtle parallax for right profile photo
+  const portrait = document.querySelector('.profile .photo img');
+  let raf = null;
+  window.addEventListener('mousemove', (e) => {
+    if (!portrait) return;
+    const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+    const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+    const tx = x * 6, ty = y * 6;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      portrait.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(1.01)`;
+    });
+  });
+  document.addEventListener('mouseleave', () => { if(portrait) portrait.style.transform = ''; });
+
+  // keyboard accessibility for toggle
+  themeBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); themeBtn.click(); }
+  });
+</script>
+</body>
+</html>
